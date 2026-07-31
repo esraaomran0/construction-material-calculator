@@ -1,0 +1,248 @@
+﻿<Window x:Class="FinalProject.Widows.CalculatorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Construction Calculator" Height="600" Width="700"
+        Background="WhiteSmoke">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <EventSetter Event="TextChanged" Handler="TextBox_TextChanged"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <EventSetter Event="SelectionChanged"  Handler="ComboBox_SelectionChanged"/>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+
+        <TabControl>
+
+            <!-- CONCRETE -->
+            <TabItem Header="Concrete">
+                <Grid Background="WhiteSmoke">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Concrete Calculator"
+                                   FontSize="18" FontWeight="Bold"
+                                   Foreground="DarkGreen"
+                                   Grid.ColumnSpan="2"
+                                   VerticalAlignment="Center"/>
+
+                    <TextBlock Text="Element Type:" Grid.Row="1" Foreground="Black"/>
+                    <ComboBox x:Name="ElementTypeBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding elementtypes}"/>
+
+                    <TextBlock Text="Material Name:" Grid.Row="2" Foreground="Black"/>
+                    <ComboBox x:Name="ConcreteName" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding MaterialName}" DisplayMemberPath="Name"/>
+
+                    <TextBlock Text="Length (m):" Grid.Row="3" Foreground="Black"/>
+                    <TextBox x:Name="ConcreteLengthBox" Grid.Row="3" Grid.Column="1"/>
+
+                    <TextBlock Text="Width (m):" Grid.Row="4" Foreground="Black"/>
+                    <TextBox x:Name="ConcreteWidthBox" Grid.Row="4" Grid.Column="1"/>
+
+                    <TextBlock Text="Depth (m):" Grid.Row="5" Foreground="Black"/>
+                    <TextBox x:Name="ConcreteDepthBox" Grid.Row="5" Grid.Column="1"/>
+
+                    <TextBlock Text="Quantity:" Grid.Row="6" Foreground="Black"/>
+                    <TextBox x:Name="ConcreteQuantityBox" Grid.Row="6" Grid.Column="1"/>
+
+                    <Button Content="Calculate" Grid.Row="7" Grid.ColumnSpan="2"
+                                Width="120" Margin="0,5"
+                                x:Name="Calculate_btn" Click="Calculate_btn_Click"/>
+
+                    <Button Content="Save" Grid.Row="8" Grid.ColumnSpan="2"
+                                Width="120" Margin="0,5"
+                                x:Name="save_btn" Click="save_btn_Click"/>
+
+                    <TextBlock Text="Result: " Grid.Row="9" Foreground="Black" FontWeight="Bold"/>
+                    <TextBlock x:Name="ConcreteResultText" Grid.Row="9" Grid.Column="1"
+                                   Foreground="DarkGreen" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+
+            <!-- STEEL -->
+            <TabItem Header="Steel">
+                <Grid  Background="WhiteSmoke">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Steel Calculator"
+                                   FontSize="18" FontWeight="Bold"
+                                   Foreground="DarkGreen"
+                                   Grid.ColumnSpan="2"
+                                   VerticalAlignment="Center"/>
+
+                    <TextBlock Text="Element Type:" Grid.Row="1" Foreground="Black"/>
+                    <ComboBox x:Name="ElementTypee" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding elementtypes}"/>
+
+                    <TextBlock Text="Material Name:" Grid.Row="2" Foreground="Black"/>
+                    <ComboBox x:Name="steelName" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding MaterialName2}" DisplayMemberPath="Name"/>
+
+                    <TextBlock Text="Bar Diameter:" Grid.Row="3" Foreground="Black"/>
+                    <ComboBox x:Name="SteelDiameterBox" Grid.Row="3" Grid.Column="1" ItemsSource="{Binding barsdiameter}"/>
+
+                    <TextBlock Text="Bar Length:" Grid.Row="4" Foreground="Black"/>
+                    <TextBox x:Name="SteelLengthBox" Grid.Row="4" Grid.Column="1"/>
+
+                    <TextBlock Text="Bars Number:" Grid.Row="5" Foreground="Black"/>
+                    <TextBox x:Name="SteelBarsBox" Grid.Row="5" Grid.Column="1"/>
+
+                    <Button Content="Calculate" Grid.Row="6" Grid.ColumnSpan="2"
+                                Width="120" Margin="0,5"
+                                x:Name="calc_btn_steel" Click="calc_btn_steel_Click"/>
+
+                    <Button Content="Save" Grid.Row="7" Grid.ColumnSpan="2"
+                                Width="120" Margin="0,5"
+                                x:Name="save_btn_steel" Click="save_btn_steel_Click"/>
+
+                    <TextBlock Text="Result:" Grid.Row="8" Foreground="Black" FontWeight="Bold"/>
+                    <TextBlock x:Name="SteelResultText" Grid.Row="8" Grid.Column="1"
+                                   Foreground="DarkGreen" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+
+            <!-- PAINT -->
+            <TabItem Header="Paint">
+                <Grid  Background="WhiteSmoke">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Paint Calculator"
+                                   FontSize="18" FontWeight="Bold"
+                                   Foreground="DarkGreen"
+                                   Grid.ColumnSpan="2"
+                                   VerticalAlignment="Center"/>
+
+                    <TextBlock Text="Surface Type:" Grid.Row="1" Foreground="Black"/>
+                    <ComboBox x:Name="PaintAreaType" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Surfacearea}"/>
+
+                    <TextBlock Text="Material Name:" Grid.Row="2" Foreground="Black"/>
+                    <ComboBox x:Name="PaintMaterialBox" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding PaintMaterials}" DisplayMemberPath="Name"/>
+
+                    <TextBlock Text="Surface Area:" Grid.Row="3" Foreground="Black"/>
+                    <TextBox x:Name="PaintAreaBox" Grid.Row="3" Grid.Column="1"/>
+
+                    <TextBlock Text="Number of Coats:" Grid.Row="4" Foreground="Black"/>
+                    <ComboBox x:Name="PaintCoatsBox" Grid.Row="4" Grid.Column="1">
+                        <ComboBoxItem Content="1"/>
+                        <ComboBoxItem Content="2"/>
+                        <ComboBoxItem Content="3"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Coverage Rate:" Grid.Row="5" Foreground="Black"/>
+                    <TextBox x:Name="PaintCoverageBox" Grid.Row="5" Grid.Column="1" Text="12"/>
+
+                    <Button Content="Calculate" Grid.Row="6" Grid.ColumnSpan="2"
+                                Width="120" Margin="0,5"
+                                x:Name="CalculatePaint" Click="CalculatePaint_Click"/>
+
+                    <Button Content="Save" Grid.Row="7" Grid.ColumnSpan="2"                               
+                                Width="120" Margin="0,5"
+                                Click="SavePaint_Click"/>
+
+                    <TextBlock Text="Result:" Grid.Row="8" Foreground="Black" FontWeight="Bold"/>
+                    <TextBlock x:Name="PaintResultText" Grid.Row="8" Grid.Column="1"
+                                   Foreground="DarkGreen" FontWeight="Bold"/>
+                </Grid>
+            </TabItem>
+
+            <!-- TILES -->
+            <TabItem Header="Tiles">
+                <Grid Background="WhiteSmoke">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                        <RowDefinition Height="35"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Tiles Calculator"
+                                   FontSize="18" FontWeight="Bold"
+                                   Foreground="DarkGreen"
+                                   Grid.ColumnSpan="2"
+                                   VerticalAlignment="Center"/>
+
+                    <TextBlock Text="Material Name:" Grid.Row="1" Foreground="Black"/>
+                    <ComboBox x:Name="TileMaterialBox" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding TileMaterials}" DisplayMemberPath="Name"/>
+
+                    <TextBlock Text="Room Length:" Grid.Row="2" Foreground="Black"/>
+                    <TextBox x:Name="RoomLengthBox" Grid.Row="2" Grid.Column="1"/>
+
+                    <TextBlock Text="Room Width:" Grid.Row="3" Foreground="Black"/>
+                    <TextBox x:Name="RoomWidthBox" Grid.Row="3" Grid.Column="1"/>
+
+                    <TextBlock Text="Tile Size:" Grid.Row="4" Foreground="Black"/>
+                    <ComboBox x:Name="TileSizeBox" Grid.Row="4" Grid.Column="1" ItemsSource="{Binding tilesize}"/>
+
+                    <TextBlock Text="Waste Percentage:" Grid.Row="5" Foreground="Black"/>
+                    <TextBox x:Name="WastePercentagebox" Grid.Row="5" Grid.Column="1"
+                                 TextChanged="WastePercentagebox_TextChanged"/>
+
+                    <Button Content="Calculate" Grid.Row="6" Grid.ColumnSpan="2"
+                                Width="120" Margin="0,5"
+                                x:Name="CalculateTiles" Click="CalculateTiles_Click"/>
+
+                    <Button Content="Save" Grid.Row="7" Grid.ColumnSpan="2"
+                                Width="120" Margin="0,5"
+                                Click="SaveTiles_Click"/>
+
+                    <TextBlock Text="Result:" Grid.Row="8" Foreground="Black" FontWeight="Bold"/>
+                    <TextBlock x:Name="TilesResultText" Grid.Row="8" Grid.Column="1"
+                                   Foreground="DarkGreen" FontWeight="Bold" FontSize="16"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+    </StackPanel>
+</Window>
